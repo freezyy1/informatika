@@ -7,13 +7,20 @@
 Формат вывода:
 Студенту надо попросить ХХХ.ХХ рублей"""
 
+
+def remove_floating(numb):
+    # топорно убираем плавающую точку TODO
+    numb = int(numb * 100) / 100
+    return numb
+
+
 educational_grant = int(input('(в рублях)\nЕжемесячная стипендия студента составляет:'))
 expenses = int(input('(в рублях)\nрасходы на проживание составляют:'))
 study_year = int(10)
 counter = 0
 required_percentage = expenses / 100 * 3
-# топорно убираем плавающую точку TODO
-required_percentage = int(required_percentage * 100) / 100
+required_percentage = remove_floating(required_percentage)
+
 
 if educational_grant > expenses:
     print('увы, но стипендия должна быть меньше, чем ваши затраты:((')
@@ -26,11 +33,9 @@ while counter != study_year:
 
 # убираем один месяц
 expenses = expenses - required_percentage
-# снова топорно убираем плавающую точку TODO
-expenses = int(expenses * 100) / 100
-
+expenses = remove_floating(expenses)
 # print(expenses)
 
-answ = int(expenses - educational_grant)
+answer = int(expenses - educational_grant)
 
-print('Студенту надо попросить', answ, 'рублей')
+print('Студенту надо попросить', answer, 'рублей')
